@@ -17,7 +17,7 @@ import com.example.hipolabschallange.ui.theme.*
 @Composable
 fun RecordCard(
     modifier: Modifier,
-    text: String,
+    recordText: String,
 ) {
     Box(
         modifier = modifier
@@ -33,7 +33,7 @@ fun RecordCard(
         contentAlignment = Alignment.CenterStart
     ) {
         Text(
-            text = text,
+            text = recordText,
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSecondaryContainer
         )

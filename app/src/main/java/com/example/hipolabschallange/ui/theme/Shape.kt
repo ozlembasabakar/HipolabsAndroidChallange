@@ -12,7 +12,7 @@ val Shapes = Shapes(
 val AddButtonVerticalPadding = 15.dp
 val AddButtonHorizontalPadding = 33.dp
 
-val TopBarTextColorAlpha = .87f
+const val TopBarTextColorAlpha = .87f
 val TopBarTextPaddingStart = 28.dp
 val TopBarTextPaddingTop = 16.dp
 val TopBarTextPaddingBottom = 16.dp
@@ -28,6 +28,11 @@ val SearchBarVerticalPadding = 16.dp
 val SearchBarShadowElevation = 2.dp
 val SearchBarIconHorizontalPadding = 16.dp
 
-
-
-
+val MainScreenVerticalArrangementSpacedBy = 20.dp
+val MainScreenSearchBarHorizontalPadding = 20.dp
+val MainScreenLazyColumnWeight = 1f
+val MainScreenLazyColumnHorizontalPadding = 20.dp
+val MainScreenLazyColumnVerticalArrangementSpacedBy = 13.dp
+val MainScreenAddButtonColumnPaddingStart = 45.dp
+val MainScreenAddButtonColumnPaddingEnd = 45.dp
+val MainScreenAddButtonColumnPaddingBottom = 46.dp

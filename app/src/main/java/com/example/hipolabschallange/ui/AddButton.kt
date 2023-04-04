@@ -18,7 +18,7 @@ import com.example.hipolabschallange.ui.theme.Shapes
 @Composable
 fun AddButton(
     modifier: Modifier,
-    text: String,
+    buttonText: String,
 ) {
     Box(
         modifier = modifier
@@ -32,7 +32,7 @@ fun AddButton(
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = text,
+            text = buttonText,
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onTertiaryContainer
         )
@@ -42,5 +42,5 @@ fun AddButton(
 @Preview
 @Composable
 fun PreviewAddButton() {
-    AddButton(modifier = Modifier, text = "ADD NEW MEMBER")
+    AddButton(modifier = Modifier, buttonText = "ADD NEW MEMBER")
 }
