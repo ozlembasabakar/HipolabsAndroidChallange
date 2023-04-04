@@ -21,6 +21,8 @@ private val DarkColorScheme = darkColorScheme(
     onSurface = Color.White,
     primaryContainer = SearchBar,
     onPrimaryContainer = Color.Black,
+    secondaryContainer = RecordCard,
+    onSecondaryContainer = Color.White,
     tertiaryContainer = AddButton,
     onTertiaryContainer = Color.Black
 
@@ -31,6 +33,8 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color.Black,
     primaryContainer = SearchBar,
     onPrimaryContainer = Color.Black,
+    secondaryContainer = RecordCard,
+    onSecondaryContainer = Color.White,
     tertiaryContainer = AddButton,
     onTertiaryContainer = Color.White
 
