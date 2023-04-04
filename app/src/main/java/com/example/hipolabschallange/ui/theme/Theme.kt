@@ -19,6 +19,8 @@ import androidx.core.view.ViewCompat
 private val DarkColorScheme = darkColorScheme(
     surface = Color.Black,
     onSurface = Color.White,
+    primaryContainer = SearchBar,
+    onPrimaryContainer = Color.Black,
     tertiaryContainer = AddButton,
     onTertiaryContainer = Color.Black
 
@@ -27,6 +29,8 @@ private val DarkColorScheme = darkColorScheme(
 private val LightColorScheme = lightColorScheme(
     surface = Color.White,
     onSurface = Color.Black,
+    primaryContainer = SearchBar,
+    onPrimaryContainer = Color.Black,
     tertiaryContainer = AddButton,
     onTertiaryContainer = Color.White
 

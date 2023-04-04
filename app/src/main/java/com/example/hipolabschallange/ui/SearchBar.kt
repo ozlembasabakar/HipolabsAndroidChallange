@@ -1,0 +1,52 @@
+package com.example.hipolabschallange.ui
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.hipolabschallange.R
+import com.example.hipolabschallange.ui.theme.Shapes
+
+@Composable
+fun SearchBar(
+    modifier: Modifier
+) {
+    Row(
+        modifier = modifier
+            .border(1.dp, color = Color.Black, shape = Shapes.medium)
+            .clip(Shapes.medium)
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .padding(
+                vertical = 16.dp
+            )
+            .fillMaxWidth()
+            .shadow(elevation = 2.dp, shape = RectangleShape, spotColor = Color(0xFFE9E9F1)),
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Icon(
+            painter = painterResource(id = R.drawable.search_icon),
+            contentDescription = "",
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
+        Text(text = "Search")
+    }
+}
+
+@Preview
+@Composable
+fun PreviewSearchBar() {
+    SearchBar(Modifier)
+}
