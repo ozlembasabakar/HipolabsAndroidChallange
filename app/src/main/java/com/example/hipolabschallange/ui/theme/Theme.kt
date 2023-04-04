@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
     primaryContainer = SearchBar,
     onPrimaryContainer = Color.Black,
     secondaryContainer = RecordCard,
-    onSecondaryContainer = Color.White,
+    onSecondaryContainer = RecordCardText,
     tertiaryContainer = AddButton,
     onTertiaryContainer = Color.White
 
