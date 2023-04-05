@@ -3,6 +3,8 @@ package com.example.hipolabschallange
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.hipolabschallange.model.Hipo
+import com.example.hipolabschallange.model.Member
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
@@ -15,21 +17,21 @@ class MainScreenViewModel @Inject constructor(
     private val _searchText = MutableStateFlow("")
     val searchText = _searchText.asStateFlow()
 
-    private val _persons = MutableStateFlow(members)
-    val persons = searchText
-        .combine(_persons) { text, persons ->
-            if(text.isBlank()) {
-                persons
+    private val _members = MutableStateFlow(memberList)
+    val members = searchText
+        .combine(_members) { text, members ->
+            if (text.isBlank()) {
+                members
             } else {
-                persons.filter {
-                    it.doesNameMatch(text)
+                members.filter {
+                    it.doesNameMatched(text)
                 }
             }
         }
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(),
-            _persons.value
+            _members.value
         )
 
     fun onSearchBarTextChanged(name: String) {
@@ -38,26 +40,47 @@ class MainScreenViewModel @Inject constructor(
     }
 }
 
-data class Person(
-    val name: String
-) {
-    fun doesNameMatch(text: String): Boolean {
-
-        val matchingCombinations = listOf(
-            name,
-        )
-
-        return matchingCombinations.any {
-            it.contains(text, ignoreCase = true)
-        }
-    }
-}
-
-val members = listOf(
-    Person(name = "Özlem"),
-    Person(name = "Osman"),
-    Person(name = "Özgün"),
-    Person(name = "Nastia"),
-    Person(name = "Ayşe"),
-    Person(name = "Buse"),
+val memberList = listOf(
+    Member(
+        name = "Özlem",
+        hipo = Hipo(position = null, years_in_hipo = null),
+        age = null,
+        github = null,
+        location = null
+    ),
+    Member(
+        name = "Osman",
+        hipo = Hipo(position = null, years_in_hipo = null),
+        age = null,
+        github = null,
+        location = null
+    ),
+    Member(
+        name = "Özgün",
+        hipo = Hipo(position = null, years_in_hipo = null),
+        age = null,
+        github = null,
+        location = null
+    ),
+    Member(
+        name = "Nastia",
+        hipo = Hipo(position = null, years_in_hipo = null),
+        age = null,
+        github = null,
+        location = null
+    ),
+    Member(
+        name = "Ayşe",
+        hipo = Hipo(position = null, years_in_hipo = null),
+        age = null,
+        github = null,
+        location = null
+    ),
+    Member(
+        name = "Buse",
+        hipo = Hipo(position = null, years_in_hipo = null),
+        age = null,
+        github = null,
+        location = null
+    ),
 )

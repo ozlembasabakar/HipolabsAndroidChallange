@@ -2,7 +2,9 @@ package com.example.hipolabschallange.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,7 +19,7 @@ import com.example.hipolabschallange.ui.theme.*
 @Composable
 fun RecordCard(
     modifier: Modifier,
-    recordText: String,
+    recordText: String?,
 ) {
     Box(
         modifier = modifier
@@ -29,19 +31,25 @@ fun RecordCard(
                 horizontal = RecordCardHorizontalPadding
             )
             .fillMaxWidth()
-            .shadow(elevation = RecordCardShadowElevation, shape = RectangleShape, spotColor = RecordCardShadowSpotColor),
+            .shadow(
+                elevation = RecordCardShadowElevation,
+                shape = RectangleShape,
+                spotColor = RecordCardShadowSpotColor
+            ),
         contentAlignment = Alignment.CenterStart
     ) {
-        Text(
-            text = recordText,
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSecondaryContainer
-        )
+        if (recordText != null) {
+            Text(
+                text = recordText,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSecondaryContainer
+            )
+        }
     }
 }
 
 @Preview
 @Composable
 fun PreviewRecordCard() {
-    RecordCard(Modifier, "asd")
+    RecordCard(Modifier, "Özlem Başabakar")
 }
