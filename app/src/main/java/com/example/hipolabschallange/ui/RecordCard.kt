@@ -24,7 +24,7 @@ fun RecordCard(
     Box(
         modifier = modifier
             .border(RecordCardBorder, color = RecordCardStroke, shape = Shapes.medium)
-            .clip(Shapes.medium)
+            .clip(Shapes.small)
             .background(MaterialTheme.colorScheme.secondaryContainer)
             .padding(
                 vertical = RecordCardVerticalPadding,
