@@ -1,6 +1,7 @@
 package com.example.hipolabschallange.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,7 +20,9 @@ import com.example.hipolabschallange.ui.theme.Shapes
 fun AddButton(
     modifier: Modifier,
     buttonText: String,
+    onClick: () -> Unit,
 ) {
+
     Box(
         modifier = modifier
             .clip(Shapes.large)
@@ -28,7 +31,10 @@ fun AddButton(
                 vertical = AddButtonVerticalPadding,
                 horizontal = AddButtonHorizontalPadding
             )
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable(
+                onClick = onClick
+            ),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -42,5 +48,5 @@ fun AddButton(
 @Preview
 @Composable
 fun PreviewAddButton() {
-    AddButton(modifier = Modifier, buttonText = "ADD NEW MEMBER")
+    AddButton(modifier = Modifier, buttonText = "ADD NEW MEMBER", onClick = {})
 }
