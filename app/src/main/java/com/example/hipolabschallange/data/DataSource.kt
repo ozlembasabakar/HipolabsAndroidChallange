@@ -2,8 +2,9 @@ package com.example.hipolabschallange.data
 
 import com.example.hipolabschallange.model.Hipo
 import com.example.hipolabschallange.model.Member
+import javax.inject.Inject
 
-class DataSource {
+class DataSource @Inject constructor() {
     val members = mutableListOf(
         Member(
             name = "Yasin Cetiner",

@@ -95,7 +95,7 @@ fun AddNewMemberDialog(
                                             color = MaterialTheme.colorScheme.onSecondaryContainer
                                         )
                                     },
-                                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Ascii),
                                     isError = isError.value,
                                 )
                             }
