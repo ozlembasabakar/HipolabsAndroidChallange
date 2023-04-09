@@ -5,8 +5,9 @@ import androidx.compose.material3.Shapes
 import androidx.compose.ui.unit.dp
 
 val Shapes = Shapes(
-    medium = RoundedCornerShape(8.dp),
-    large = RoundedCornerShape(40.dp)
+    small = RoundedCornerShape(8.dp),
+    medium = RoundedCornerShape(16.dp),
+    large = RoundedCornerShape(40.dp),
 )
 
 val AddButtonVerticalPadding = 15.dp
@@ -27,6 +28,11 @@ val SearchBarBorder = 1.dp
 val SearchBarVerticalPadding = 16.dp
 val SearchBarShadowElevation = 2.dp
 val SearchBarIconHorizontalPadding = 16.dp
+
+val AddNewMemberDialogColumnPadding = 20.dp
+val AddNewMemberDialogColumnVerticalArrangementPadding = 15.dp
+val AddNewMemberDialogDividerHeight = 2.dp
+val AddNewMemberDialogTextFieldsColumnVerticalArrangementPadding = 10.dp
 
 val MainScreenVerticalArrangementSpacedBy = 20.dp
 val MainScreenSearchBarHorizontalPadding = 20.dp

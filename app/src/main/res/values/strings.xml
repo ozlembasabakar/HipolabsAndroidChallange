@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">HipolabsChallange</string>
+
+    <string name="add_new_member_dialog_label">Please enter your information</string>
+    <string name="add_new_member_dialog_name_placeholder">Name</string>
+    <string name="add_new_member_dialog_position_placeholder">Position</string>
+    <string name="add_new_member_dialog_add_button">Add</string>
+    <string name="add_new_member_dialog_cancel_button">Cancel</string>
+
+    <string name="top_bar_text">Members</string>
+    <string name="add_button_text">ADD NEW MEMBER</string>
+    <string name="search_icon_description">Search Icon</string>
+
 </resources>
