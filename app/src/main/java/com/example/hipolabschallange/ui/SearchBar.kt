@@ -7,10 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,10 +18,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.hipolabschallange.R
 import com.example.hipolabschallange.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchBar(
     modifier: Modifier,
@@ -36,11 +35,8 @@ fun SearchBar(
     Row(
         modifier = modifier
             .border(SearchBarBorder, color = SearchBarStroke, shape = Shapes.medium)
-            .clip(Shapes.medium)
+            .clip(Shapes.small)
             .background(MaterialTheme.colorScheme.primaryContainer)
-            .padding(
-                vertical = SearchBarVerticalPadding
-            )
             .fillMaxWidth()
             .shadow(
                 elevation = SearchBarShadowElevation,
@@ -52,7 +48,7 @@ fun SearchBar(
     ) {
         Icon(
             painter = painterResource(id = R.drawable.search_icon),
-            contentDescription = "",
+            contentDescription = stringResource(id = R.string.search_icon_description),
             modifier = Modifier.padding(
                 horizontal = SearchBarIconHorizontalPadding
             )
@@ -67,7 +63,7 @@ fun SearchBar(
             keyboardActions = KeyboardActions(
                 onNext = { focusManager.moveFocus(FocusDirection.Down) }
             ),
-            textStyle = MaterialTheme.typography.bodyMedium,
+            textStyle = MaterialTheme.typography.bodyLarge,
             colors = TextFieldDefaults.textFieldColors(
                 focusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
