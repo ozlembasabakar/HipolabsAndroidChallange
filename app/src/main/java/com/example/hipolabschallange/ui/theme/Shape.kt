@@ -27,12 +27,14 @@ val RecordCardShadowElevation = 2.dp
 val SearchBarBorder = 1.dp
 val SearchBarVerticalPadding = 16.dp
 val SearchBarShadowElevation = 2.dp
-val SearchBarIconHorizontalPadding = 16.dp
+val SearchBarIconPadding = 16.dp
 
 val AddNewMemberDialogColumnPadding = 20.dp
 val AddNewMemberDialogColumnVerticalArrangementPadding = 15.dp
 val AddNewMemberDialogDividerHeight = 2.dp
 val AddNewMemberDialogTextFieldsColumnVerticalArrangementPadding = 10.dp
+val AddNewMemberDialogActionButtonsPadding = 8.dp
+val AddNewMemberDialogActionButtonsRowSpacer = 15.dp
 
 val MainScreenVerticalArrangementSpacedBy = 20.dp
 val MainScreenSearchBarHorizontalPadding = 20.dp

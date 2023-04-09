@@ -50,13 +50,14 @@ fun SearchBar(
             painter = painterResource(id = R.drawable.search_icon),
             contentDescription = stringResource(id = R.string.search_icon_description),
             modifier = Modifier.padding(
-                horizontal = SearchBarIconHorizontalPadding
+                start = SearchBarIconPadding
             )
         )
         TextField(
             value = value,
             onValueChange = onValueChange,
             singleLine = true,
+            maxLines = 1,
             modifier = Modifier
                 .fillMaxWidth()
                 .background(MaterialTheme.colorScheme.primaryContainer),
