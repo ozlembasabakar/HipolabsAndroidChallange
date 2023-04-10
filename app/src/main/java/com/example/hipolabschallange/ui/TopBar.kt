@@ -24,7 +24,7 @@ fun TopBar(
                     bottom = TopBarTextPaddingBottom
                 ),
                 text = topBarText,
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.headlineSmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = TopBarTextColorAlpha)
             )
         },

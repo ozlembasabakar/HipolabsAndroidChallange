@@ -41,7 +41,7 @@ fun RecordCard(
         if (recordText != null) {
             Text(
                 text = recordText,
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSecondaryContainer
             )
         }

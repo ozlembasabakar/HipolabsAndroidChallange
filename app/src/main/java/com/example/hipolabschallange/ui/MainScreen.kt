@@ -5,8 +5,12 @@ import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -16,7 +20,8 @@ import com.example.hipolabschallange.MainScreenViewModel
 import com.example.hipolabschallange.R
 import com.example.hipolabschallange.ui.theme.*
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "StateFlowValueCalledInComposition",
+@SuppressLint(
+    "UnusedMaterial3ScaffoldPaddingParameter", "StateFlowValueCalledInComposition",
     "UnrememberedMutableState"
 )
 @Composable
@@ -34,21 +39,23 @@ fun MainScreen() {
         containerColor = MaterialTheme.colorScheme.surface,
         content =
         {
-            if (mainScreenViewModel.isDialogVisible.value) {
+            if (mainScreenViewModel.isDialogVisible.value)
                 AddNewMemberDialog(
                     onClick = {
                         mainScreenViewModel.addNewMember(
                             name.value,
                             position.value
                         )
-                        Log.d("ozlem", "members: ${mainScreenViewModel.members.value}")
+                        Log.d(
+                            "ozlem",
+                            "members after adding new one: ${mainScreenViewModel.members.value}"
+                        )
                     },
                     name = name,
                     position = position,
                     isError = mainScreenViewModel.isError,
                     isDialogVisible = mainScreenViewModel.isDialogVisible
                 )
-            }
 
             Column(
                 modifier = Modifier

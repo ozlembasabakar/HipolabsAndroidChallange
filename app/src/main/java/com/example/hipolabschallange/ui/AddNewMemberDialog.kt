@@ -25,6 +25,7 @@ import com.example.hipolabschallange.ui.theme.*
 
 @Composable
 fun AddNewMemberDialog(
+    modifier: Modifier = Modifier,
     name: MutableState<String>,
     position: MutableState<String>,
     isDialogVisible: MutableState<Boolean>,
@@ -32,9 +33,10 @@ fun AddNewMemberDialog(
     onClick: (String) -> Unit,
 ) {
 
-    HipolabsChallangeTheme {
-        Dialog(onDismissRequest = { }
-        ) {
+    Dialog(
+        onDismissRequest = { },
+        content =
+        {
             Surface(
                 shape = Shapes.medium,
                 color = MaterialTheme.colorScheme.surface
@@ -43,7 +45,7 @@ fun AddNewMemberDialog(
                     contentAlignment = Alignment.Center
                 ) {
                     Column(
-                        modifier = Modifier.padding(AddNewMemberDialogColumnPadding),
+                        modifier = modifier.padding(AddNewMemberDialogColumnPadding),
                         verticalArrangement = Arrangement.spacedBy(
                             AddNewMemberDialogColumnVerticalArrangementPadding
                         )
@@ -51,7 +53,7 @@ fun AddNewMemberDialog(
 
                         Text(
                             text = stringResource(id = R.string.add_new_member_dialog_label),
-                            style = MaterialTheme.typography.bodyLarge,
+                            style = MaterialTheme.typography.headlineSmall,
                             color = MaterialTheme.colorScheme.onSurface
                         )
 
@@ -81,19 +83,21 @@ fun AddNewMemberDialog(
                                 contentAlignment = Alignment.CenterStart
                             ) {
                                 TextField(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .background(MaterialTheme.colorScheme.secondaryContainer),
                                     value = name.value,
                                     onValueChange = {
                                         name.value = it
                                         isError.value = false
                                     },
+                                    textStyle = MaterialTheme.typography.displaySmall,
                                     singleLine = true,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .background(MaterialTheme.colorScheme.secondaryContainer),
                                     placeholder = {
                                         Text(
                                             text = stringResource(id = R.string.add_new_member_dialog_name_placeholder),
-                                            color = MaterialTheme.colorScheme.onSecondaryContainer
+                                            color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                            style = MaterialTheme.typography.displaySmall
                                         )
                                     },
                                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Ascii),
@@ -114,19 +118,21 @@ fun AddNewMemberDialog(
                                 contentAlignment = Alignment.CenterStart
                             ) {
                                 TextField(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .background(MaterialTheme.colorScheme.secondaryContainer),
                                     value = position.value,
                                     onValueChange = {
                                         position.value = it
                                         isError.value = false
                                     },
+                                    textStyle = MaterialTheme.typography.displaySmall,
                                     singleLine = true,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .background(MaterialTheme.colorScheme.secondaryContainer),
                                     placeholder = {
                                         Text(
                                             text = stringResource(id = R.string.add_new_member_dialog_position_placeholder),
-                                            color = MaterialTheme.colorScheme.onSecondaryContainer
+                                            color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                            style = MaterialTheme.typography.displaySmall
                                         )
                                     },
                                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
@@ -153,7 +159,11 @@ fun AddNewMemberDialog(
                                     )
                                     .padding(AddNewMemberDialogActionButtonsPadding)
                             )
-                            Spacer(modifier = Modifier.width(AddNewMemberDialogActionButtonsRowSpacer))
+                            Spacer(
+                                modifier = Modifier.width(
+                                    AddNewMemberDialogActionButtonsRowSpacer
+                                )
+                            )
                             Text(
                                 text = stringResource(R.string.add_new_member_dialog_add_button),
                                 modifier = Modifier
@@ -180,9 +190,28 @@ fun AddNewMemberDialog(
                 }
             }
         }
-    }
+    )
 }
 
+
+@Preview
+@Composable
+fun AddNewMemberDialog_isError_Preview() {
+    val name = remember { mutableStateOf("") }
+    val position = remember { mutableStateOf("") }
+    val isDialogVisible = remember { mutableStateOf(true) }
+    val isError = remember { mutableStateOf(true) }
+
+    HipolabsChallangeTheme {
+        AddNewMemberDialog(
+            name = name,
+            position = position,
+            isDialogVisible = isDialogVisible,
+            isError = isError,
+            onClick = {}
+        )
+    }
+}
 
 @Preview
 @Composable
@@ -197,7 +226,8 @@ fun AddNewMemberDialogPreview() {
             name = name,
             position = position,
             isDialogVisible = isDialogVisible,
-            isError = isError
-        ) {}
+            isError = isError,
+            onClick = {}
+        )
     }
 }
