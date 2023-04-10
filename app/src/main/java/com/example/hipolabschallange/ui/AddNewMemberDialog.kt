@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -15,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -23,6 +25,7 @@ import androidx.compose.ui.window.Dialog
 import com.example.hipolabschallange.R
 import com.example.hipolabschallange.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddNewMemberDialog(
     modifier: Modifier = Modifier,
@@ -102,6 +105,17 @@ fun AddNewMemberDialog(
                                     },
                                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Ascii),
                                     isError = isError.value,
+                                    colors = TextFieldDefaults.textFieldColors(
+                                        focusedIndicatorColor = Color.Transparent,
+                                        disabledIndicatorColor = Color.Transparent,
+                                        unfocusedIndicatorColor = Color.Transparent,
+                                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                        cursorColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                        selectionColors = TextSelectionColors(
+                                            backgroundColor = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = SearchBarTextColorAlpha),
+                                            handleColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                        )
+                                    ),
                                 )
                             }
 
@@ -137,6 +151,17 @@ fun AddNewMemberDialog(
                                     },
                                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                                     isError = isError.value,
+                                    colors = TextFieldDefaults.textFieldColors(
+                                        focusedIndicatorColor = Color.Transparent,
+                                        disabledIndicatorColor = Color.Transparent,
+                                        unfocusedIndicatorColor = Color.Transparent,
+                                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                        cursorColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                                        selectionColors = TextSelectionColors(
+                                            backgroundColor = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = SearchBarTextColorAlpha),
+                                            handleColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                        )
+                                    ),
                                 )
                             }
                         }

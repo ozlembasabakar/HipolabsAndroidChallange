@@ -2,11 +2,9 @@ package com.example.hipolabschallange.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,8 +32,8 @@ fun SearchBar(
 
     Row(
         modifier = modifier
-            .border(SearchBarBorder, color = SearchBarStroke, shape = Shapes.medium)
             .clip(Shapes.small)
+            .border(SearchBarBorder, color = SearchBarStroke, shape = Shapes.small)
             .background(MaterialTheme.colorScheme.primaryContainer)
             .fillMaxWidth()
             .shadow(
@@ -70,7 +68,12 @@ fun SearchBar(
                 disabledIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
-            )
+                cursorColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                selectionColors = TextSelectionColors(
+                    backgroundColor = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = SearchBarTextColorAlpha),
+                    handleColor = MaterialTheme.colorScheme.onPrimaryContainer
+                )
+            ),
         )
     }
 }

@@ -28,6 +28,7 @@ val SearchBarBorder = 1.dp
 val SearchBarVerticalPadding = 16.dp
 val SearchBarShadowElevation = 2.dp
 val SearchBarIconPadding = 16.dp
+const val SearchBarTextColorAlpha = .5f
 
 val AddNewMemberDialogColumnPadding = 20.dp
 val AddNewMemberDialogColumnVerticalArrangementPadding = 15.dp
@@ -38,7 +39,7 @@ val AddNewMemberDialogActionButtonsRowSpacer = 15.dp
 
 val MainScreenVerticalArrangementSpacedBy = 20.dp
 val MainScreenSearchBarHorizontalPadding = 20.dp
-val MainScreenLazyColumnWeight = 1f
+const val MainScreenLazyColumnWeight = 1f
 val MainScreenLazyColumnHorizontalPadding = 20.dp
 val MainScreenLazyColumnVerticalArrangementSpacedBy = 13.dp
 val MainScreenAddButtonColumnPaddingStart = 45.dp
