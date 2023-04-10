@@ -1,4 +1,4 @@
-package com.example.hipolabschallange.ui
+package com.example.hipolabschallange.feature.membersScreen
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -16,20 +16,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.hipolabschallange.MainScreenViewModel
 import com.example.hipolabschallange.R
-import com.example.hipolabschallange.ui.theme.*
+import com.example.hipolabschallange.designsystem.components.*
+import com.example.hipolabschallange.designsystem.theme.*
 
 @SuppressLint(
     "UnusedMaterial3ScaffoldPaddingParameter", "StateFlowValueCalledInComposition",
     "UnrememberedMutableState"
 )
 @Composable
-fun MainScreen() {
+fun MembersScreen() {
 
-    val mainScreenViewModel: MainScreenViewModel = hiltViewModel()
-    val searchText by mainScreenViewModel.searchText.collectAsState()
-    val members by mainScreenViewModel.members.collectAsState()
+    val membersScreenViewModel: MembersScreenViewModel = hiltViewModel()
+    val searchText by membersScreenViewModel.searchText.collectAsState()
+    val members by membersScreenViewModel.members.collectAsState()
 
     val name = mutableStateOf("")
 
@@ -39,22 +39,22 @@ fun MainScreen() {
         containerColor = MaterialTheme.colorScheme.surface,
         content =
         {
-            if (mainScreenViewModel.isDialogVisible.value)
+            if (membersScreenViewModel.isDialogVisible.value)
                 AddNewMemberDialog(
                     onClick = {
-                        mainScreenViewModel.addNewMember(
+                        membersScreenViewModel.addNewMember(
                             name.value,
                             position.value
                         )
                         Log.d(
                             "ozlem",
-                            "members after adding new one: ${mainScreenViewModel.members.value}"
+                            "members after adding new one: ${membersScreenViewModel.members.value}"
                         )
                     },
                     name = name,
                     position = position,
-                    isError = mainScreenViewModel.isError,
-                    isDialogVisible = mainScreenViewModel.isDialogVisible
+                    isError = membersScreenViewModel.isError,
+                    isDialogVisible = membersScreenViewModel.isDialogVisible
                 )
 
             Column(
@@ -69,7 +69,7 @@ fun MainScreen() {
                 SearchBar(
                     Modifier.padding(horizontal = MainScreenSearchBarHorizontalPadding),
                     value = searchText,
-                    onValueChange = mainScreenViewModel::onSearchBarTextChanged
+                    onValueChange = membersScreenViewModel::onSearchBarTextChanged
                 )
 
                 LazyColumn(
@@ -101,7 +101,7 @@ fun MainScreen() {
                         modifier = Modifier,
                         buttonText = stringResource(id = R.string.add_button_text),
                         onClick = {
-                            mainScreenViewModel.isDialogVisible.value = true
+                            membersScreenViewModel.isDialogVisible.value = true
                         }
                     )
                 }
@@ -114,5 +114,5 @@ fun MainScreen() {
 @Preview
 @Composable
 fun PreviewMainScreen() {
-    MainScreen()
+    MembersScreen()
 }

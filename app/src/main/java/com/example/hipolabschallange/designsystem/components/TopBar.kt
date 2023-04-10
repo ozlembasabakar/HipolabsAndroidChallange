@@ -1,4 +1,4 @@
-package com.example.hipolabschallange.ui
+package com.example.hipolabschallange.designsystem.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.hipolabschallange.ui.theme.*
+import com.example.hipolabschallange.designsystem.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

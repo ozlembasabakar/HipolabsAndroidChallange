@@ -1,4 +1,4 @@
-package com.example.hipolabschallange.ui
+package com.example.hipolabschallange.designsystem.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -14,7 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.hipolabschallange.ui.theme.*
+import com.example.hipolabschallange.designsystem.theme.*
 
 @Composable
 fun RecordCard(

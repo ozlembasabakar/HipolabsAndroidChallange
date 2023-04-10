@@ -1,4 +1,4 @@
-package com.example.hipolabschallange.ui
+package com.example.hipolabschallange.designsystem.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,7 +19,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.hipolabschallange.R
-import com.example.hipolabschallange.ui.theme.*
+import com.example.hipolabschallange.designsystem.icon.AppIcons.SearchIcon
+import com.example.hipolabschallange.designsystem.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -45,7 +46,7 @@ fun SearchBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.search_icon),
+            painter = painterResource(id = SearchIcon),
             contentDescription = stringResource(id = R.string.search_icon_description),
             modifier = Modifier.padding(
                 start = SearchBarIconPadding

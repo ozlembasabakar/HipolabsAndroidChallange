@@ -1,4 +1,4 @@
-package com.example.hipolabschallange.ui.theme
+package com.example.hipolabschallange.designsystem.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes

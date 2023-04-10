@@ -1,4 +1,4 @@
-package com.example.hipolabschallange
+package com.example.hipolabschallange.feature.membersScreen
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
-class MainScreenViewModel @Inject constructor(
+class MembersScreenViewModel @Inject constructor(
     private val repository: Repository,
 ) : ViewModel() {
 

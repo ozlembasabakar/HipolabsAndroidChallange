@@ -1,4 +1,4 @@
-package com.example.hipolabschallange.ui
+package com.example.hipolabschallange.designsystem.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,9 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.hipolabschallange.ui.theme.AddButtonHorizontalPadding
-import com.example.hipolabschallange.ui.theme.AddButtonVerticalPadding
-import com.example.hipolabschallange.ui.theme.Shapes
+import com.example.hipolabschallange.designsystem.theme.AddButtonHorizontalPadding
+import com.example.hipolabschallange.designsystem.theme.AddButtonVerticalPadding
+import com.example.hipolabschallange.designsystem.theme.Shapes
 
 @Composable
 fun AddButton(
@@ -34,13 +34,13 @@ fun AddButton(
                 interactionSource = remember { MutableInteractionSource() },
                 indication =
                 rememberRipple(bounded = true),
-            ).background(MaterialTheme.colorScheme.tertiaryContainer)
+            )
+            .background(MaterialTheme.colorScheme.tertiaryContainer)
             .padding(
                 vertical = AddButtonVerticalPadding,
                 horizontal = AddButtonHorizontalPadding
             )
-            .fillMaxWidth()
-            ,
+            .fillMaxWidth(),
         contentAlignment = Alignment.Center
     ) {
         Text(

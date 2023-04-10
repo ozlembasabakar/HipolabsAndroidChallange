@@ -1,4 +1,4 @@
-package com.example.hipolabschallange.ui.theme
+package com.example.hipolabschallange.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
