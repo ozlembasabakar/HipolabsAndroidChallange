@@ -81,7 +81,7 @@ fun MainScreen() {
                         MainScreenLazyColumnVerticalArrangementSpacedBy
                     ),
                 ) {
-                    items(members.member) {
+                    items(members) {
                         RecordCard(
                             modifier = Modifier,
                             recordText = it.name

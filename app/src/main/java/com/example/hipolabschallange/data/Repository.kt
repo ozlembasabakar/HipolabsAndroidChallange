@@ -4,11 +4,11 @@ import com.example.hipolabschallange.model.Member
 import javax.inject.Inject
 
 class Repository @Inject constructor(
-    private val dataSource: DataSource
+    private val dataSource: DataSource,
 ) {
 
     fun getAllMember(): List<Member> {
-        return dataSource.members
+        return DataSource().members
     }
 
     fun addNewMemberAndGetAllMembers(member: Member): MutableList<Member> {
