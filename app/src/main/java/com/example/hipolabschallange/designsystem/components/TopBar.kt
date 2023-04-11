@@ -6,6 +6,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.hipolabschallange.designsystem.theme.*
 
@@ -18,11 +19,13 @@ fun TopBar(
     TopAppBar(
         title = {
             Text(
-                modifier = Modifier.padding(
-                    start = TopBarTextPaddingStart,
-                    top = TopBarTextPaddingTop,
-                    bottom = TopBarTextPaddingBottom
-                ),
+                modifier = Modifier
+                    .padding(
+                        start = TopBarTextPaddingStart,
+                        top = TopBarTextPaddingTop,
+                        bottom = TopBarTextPaddingBottom
+                    )
+                    .testTag("TopBarText"),
                 text = topBarText,
                 style = MaterialTheme.typography.headlineSmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = TopBarTextColorAlpha)
@@ -34,6 +37,7 @@ fun TopBar(
                 elevation = TopBarShadowElevation,
                 spotColor = TopBarShadowSpotColor
             )
+            .testTag("TopBar")
     )
 }
 
