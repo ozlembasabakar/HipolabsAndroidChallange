@@ -15,6 +15,9 @@ class MembersScreenViewModel @Inject constructor(
     private val repository: Repository,
 ) : ViewModel() {
 
+    val name = mutableStateOf("")
+    val position = mutableStateOf("")
+
     private val _searchText = MutableStateFlow("")
     val searchText = _searchText.asStateFlow()
 

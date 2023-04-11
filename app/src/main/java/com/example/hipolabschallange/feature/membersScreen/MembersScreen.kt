@@ -8,10 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -32,9 +29,8 @@ fun MembersScreen() {
     val searchText by membersScreenViewModel.searchText.collectAsState()
     val members by membersScreenViewModel.members.collectAsState()
 
-    val name = mutableStateOf("")
-
-    val position = mutableStateOf("")
+    val name = membersScreenViewModel.name
+    val position = membersScreenViewModel.position
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.surface,
@@ -47,6 +43,10 @@ fun MembersScreen() {
                             name.value,
                             position.value
                         )
+
+                        name.value = ""
+                        position.value = ""
+
                         Log.d(
                             "ozlem",
                             "members after adding new one: ${membersScreenViewModel.members.value}"
