@@ -40,5 +40,7 @@ fun TopBar(
 @Preview
 @Composable
 fun PreviewTopBar() {
-    TopBar(modifier = Modifier, topBarText = "Members")
+    HipolabsChallengeTheme {
+        TopBar(modifier = Modifier, topBarText = "Members")
+    }
 }

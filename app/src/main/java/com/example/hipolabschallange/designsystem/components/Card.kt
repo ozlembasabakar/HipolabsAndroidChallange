@@ -13,13 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.hipolabschallange.designsystem.theme.*
 
 @Composable
-fun RecordCard(
+fun Card(
     modifier: Modifier,
-    recordText: String?,
+    text: String?,
 ) {
     Box(
         modifier = modifier
@@ -35,12 +36,13 @@ fun RecordCard(
                 elevation = RecordCardShadowElevation,
                 shape = RectangleShape,
                 spotColor = RecordCardShadowSpotColor
-            ),
+            )
+            .testTag("RecordCard"),
         contentAlignment = Alignment.CenterStart
     ) {
-        if (recordText != null) {
+        if (text != null) {
             Text(
-                text = recordText,
+                text = text,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSecondaryContainer
             )
@@ -48,8 +50,18 @@ fun RecordCard(
     }
 }
 
+@Composable
+fun RecordCard(
+    modifier: Modifier,
+    recordText: String?,
+) {
+    Card(modifier = modifier, text = recordText)
+}
+
 @Preview
 @Composable
 fun PreviewRecordCard() {
-    RecordCard(Modifier, "Özlem Başabakar")
+    HipolabsChallengeTheme {
+        RecordCard(Modifier, "Özlem Başabakar")
+    }
 }

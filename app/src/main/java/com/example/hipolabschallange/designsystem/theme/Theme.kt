@@ -18,10 +18,9 @@ private val DarkColorScheme = darkColorScheme(
     primaryContainer = SearchBar,
     onPrimaryContainer = Color.Black,
     secondaryContainer = RecordCard,
-    onSecondaryContainer = Color.White,
+    onSecondaryContainer = Color.Black,
     tertiaryContainer = AddButton,
     onTertiaryContainer = Color.Black
-
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -32,7 +31,7 @@ private val LightColorScheme = lightColorScheme(
     secondaryContainer = RecordCard,
     onSecondaryContainer = RecordCardText,
     tertiaryContainer = AddButton,
-    onTertiaryContainer = Color.White
+    onTertiaryContainer = Color.White,
 )
 
 @Composable

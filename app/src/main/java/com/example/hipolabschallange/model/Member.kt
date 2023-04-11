@@ -9,6 +9,17 @@ data class Member(
     val name: String?,
 ) {
     fun doesNameMatched(text: String): Boolean {
-        return name?.contains(text, ignoreCase = true) ?: false
+
+        val matchedNameList = listOf(
+            name,
+            name?.replace(" ", ""),
+            name?.lowercase(),
+            name?.uppercase(),
+            name?.replace(" ","")?.lowercase()
+        )
+
+        return matchedNameList.any {
+            it?.contains(text, ignoreCase = true) ?: false
+        }
     }
 }

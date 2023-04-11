@@ -14,18 +14,20 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.hipolabschallange.designsystem.theme.AddButtonHorizontalPadding
 import com.example.hipolabschallange.designsystem.theme.AddButtonVerticalPadding
+import com.example.hipolabschallange.designsystem.theme.HipolabsChallengeTheme
 import com.example.hipolabschallange.designsystem.theme.Shapes
 
+
 @Composable
-fun AddButton(
+fun Button(
     modifier: Modifier,
     buttonText: String,
     onClick: () -> Unit,
 ) {
-
     Box(
         modifier = modifier
             .clip(Shapes.large)
@@ -49,10 +51,26 @@ fun AddButton(
             color = MaterialTheme.colorScheme.onTertiaryContainer
         )
     }
+
+}
+
+@Composable
+fun AddButton(
+    modifier: Modifier,
+    buttonText: String,
+    onClick: () -> Unit,
+) {
+    Button(
+        modifier = modifier.testTag("AddButton"),
+        buttonText = buttonText,
+        onClick = onClick
+    )
 }
 
 @Preview
 @Composable
 fun PreviewAddButton() {
-    AddButton(modifier = Modifier, buttonText = "ADD NEW MEMBER", onClick = {})
+    HipolabsChallengeTheme {
+        AddButton(modifier = Modifier, buttonText = "ADD NEW MEMBER", onClick = {})
+    }
 }

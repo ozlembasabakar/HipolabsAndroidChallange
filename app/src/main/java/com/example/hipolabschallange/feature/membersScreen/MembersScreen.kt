@@ -2,9 +2,10 @@ package com.example.hipolabschallange.feature.membersScreen
 
 import android.annotation.SuppressLint
 import android.util.Log
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -72,22 +73,11 @@ fun MembersScreen() {
                     onValueChange = membersScreenViewModel::onSearchBarTextChanged
                 )
 
-                LazyColumn(
-                    modifier = Modifier.weight(MainScreenLazyColumnWeight),
-                    contentPadding = PaddingValues(
-                        horizontal = MainScreenLazyColumnHorizontalPadding
-                    ),
-                    verticalArrangement = Arrangement.spacedBy(
-                        MainScreenLazyColumnVerticalArrangementSpacedBy
-                    ),
-                ) {
-                    items(members) {
-                        RecordCard(
-                            modifier = Modifier,
-                            recordText = it.name
-                        )
-                    }
-                }
+                MemberList(
+                    modifier = Modifier
+                        .weight(MainScreenLazyColumnWeight),
+                    items = members
+                )
 
                 Column(
                     modifier = Modifier

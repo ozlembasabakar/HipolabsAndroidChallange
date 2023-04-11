@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,7 +27,7 @@ import com.example.hipolabschallange.R
 import com.example.hipolabschallange.designsystem.theme.*
 
 @Composable
-fun AddNewMemberDialog(
+fun Dialog(
     modifier: Modifier = Modifier,
     name: MutableState<String>,
     position: MutableState<String>,
@@ -40,6 +41,7 @@ fun AddNewMemberDialog(
         content =
         {
             Surface(
+                modifier = modifier.testTag("AddNewMemberDialog"),
                 shape = Shapes.medium,
                 color = MaterialTheme.colorScheme.surface
             ) {
@@ -54,6 +56,7 @@ fun AddNewMemberDialog(
                     ) {
 
                         Text(
+                            modifier = Modifier.testTag("AddNewMemberDialogHeader"),
                             text = stringResource(id = R.string.add_new_member_dialog_label),
                             style = MaterialTheme.typography.headlineSmall,
                             color = MaterialTheme.colorScheme.onSurface
@@ -73,19 +76,21 @@ fun AddNewMemberDialog(
                             )
                         ) {
 
-                            AddNewMemberInputTextField(
+                            DialogInputTextField(
+                                modifier = Modifier,
                                 inputText = name,
                                 isError = isError,
-                                background = MaterialTheme.colorScheme.secondaryContainer,
-                                textColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                                background = MaterialTheme.colorScheme.primaryContainer,
+                                textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                                 placeholder = stringResource(id = R.string.add_new_member_dialog_name_placeholder),
                             )
 
-                            AddNewMemberInputTextField(
+                            DialogInputTextField(
+                                modifier = Modifier.testTag("AddNewMemberDialogCancelButton"),
                                 inputText = position,
                                 isError = isError,
-                                background = MaterialTheme.colorScheme.secondaryContainer,
-                                textColor = MaterialTheme.colorScheme.onSecondaryContainer,
+                                background = MaterialTheme.colorScheme.primaryContainer,
+                                textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                                 placeholder = stringResource(id = R.string.add_new_member_dialog_position_placeholder),
                             )
                         }
@@ -94,7 +99,8 @@ fun AddNewMemberDialog(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.End
                         ) {
-                            AddNewMemberDialogActionButton(
+                            DialogActionButton(
+                                modifier = Modifier.testTag("AddNewMemberDialogCancelButton"),
                                 buttonText = stringResource(id = R.string.add_new_member_dialog_cancel_button),
                                 onClick = {
                                     isDialogVisible.value = false
@@ -105,7 +111,8 @@ fun AddNewMemberDialog(
                                     AddNewMemberDialogActionButtonsRowSpacer
                                 )
                             )
-                            AddNewMemberDialogActionButton(
+                            DialogActionButton(
+                                modifier = Modifier.testTag("AddNewMemberDialogAddButton"),
                                 buttonText = stringResource(R.string.add_new_member_dialog_add_button),
                                 onClick = {
                                     if (position.value.isBlank() || name.value.isBlank()) {
@@ -128,7 +135,7 @@ fun AddNewMemberDialog(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddNewMemberInputTextField(
+fun DialogInputTextField(
     modifier: Modifier = Modifier,
     background: Color,
     textColor: Color,
@@ -151,7 +158,8 @@ fun AddNewMemberInputTextField(
         TextField(
             modifier = modifier
                 .fillMaxWidth()
-                .background(background),
+                .background(background)
+                .testTag("AddNewMemberInputText"),
             value = inputText.value,
             onValueChange = {
                 inputText.value = it
@@ -184,13 +192,14 @@ fun AddNewMemberInputTextField(
 }
 
 @Composable
-fun AddNewMemberDialogActionButton(
+fun DialogActionButton(
+    modifier: Modifier = Modifier,
     buttonText: String,
     onClick: () -> Unit,
 ) {
     Text(
         text = buttonText,
-        modifier = Modifier
+        modifier = modifier
             .clip(Shapes.large)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
@@ -199,6 +208,25 @@ fun AddNewMemberDialogActionButton(
                 onClick = onClick
             )
             .padding(AddNewMemberDialogActionButtonsPadding)
+    )
+}
+
+@Composable
+fun AddNewMemberDialog(
+    modifier: Modifier = Modifier,
+    name: MutableState<String>,
+    position: MutableState<String>,
+    isDialogVisible: MutableState<Boolean>,
+    isError: MutableState<Boolean>,
+    onClick: (String) -> Unit,
+) {
+    Dialog(
+        modifier = modifier,
+        name = name,
+        position = position,
+        isDialogVisible = isDialogVisible,
+        isError = isError,
+        onClick = onClick
     )
 }
 

@@ -15,6 +15,7 @@ import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,7 +42,8 @@ fun SearchBar(
                 elevation = SearchBarShadowElevation,
                 shape = RectangleShape,
                 spotColor = SearchBarShadowSpotColor
-            ),
+            )
+            .testTag("SearchBar"),
         horizontalArrangement = Arrangement.Start,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -51,6 +53,7 @@ fun SearchBar(
             modifier = Modifier.padding(
                 start = SearchBarIconPadding
             )
+                .testTag("SearchBarIcon")
         )
         TextField(
             value = value,
@@ -59,7 +62,8 @@ fun SearchBar(
             maxLines = 1,
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.primaryContainer),
+                .background(MaterialTheme.colorScheme.primaryContainer)
+                .testTag("SearchBarInput"),
             keyboardActions = KeyboardActions(
                 onNext = { focusManager.moveFocus(FocusDirection.Down) }
             ),
@@ -74,7 +78,7 @@ fun SearchBar(
                     backgroundColor = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = SearchBarTextColorAlpha),
                     handleColor = MaterialTheme.colorScheme.onPrimaryContainer
                 )
-            ),
+            )
         )
     }
 }
@@ -82,5 +86,7 @@ fun SearchBar(
 @Preview
 @Composable
 fun PreviewSearchBar() {
-    SearchBar(Modifier, value = "", onValueChange = {})
+    HipolabsChallengeTheme {
+        SearchBar(Modifier, value = "", onValueChange = {})
+    }
 }
