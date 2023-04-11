@@ -63,7 +63,7 @@ fun SearchBar(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(MaterialTheme.colorScheme.primaryContainer)
-                .testTag("SearchBarInput"),
+                .testTag("SearchBarTextInput"),
             keyboardActions = KeyboardActions(
                 onNext = { focusManager.moveFocus(FocusDirection.Down) }
             ),
