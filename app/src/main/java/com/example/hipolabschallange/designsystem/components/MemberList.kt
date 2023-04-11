@@ -7,8 +7,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import com.example.hipolabschallange.designsystem.theme.MainScreenLazyColumnHorizontalPadding
-import com.example.hipolabschallange.designsystem.theme.MainScreenLazyColumnVerticalArrangementSpacedBy
+import com.example.hipolabschallange.designsystem.theme.MemberListContentPadding
+import com.example.hipolabschallange.designsystem.theme.MemberListVerticalArrangementSpacedBy
 import com.example.hipolabschallange.model.Member
 
 @Composable
@@ -20,10 +20,10 @@ fun MemberList(
         modifier = modifier
             .testTag("RecordCardList"),
         contentPadding = PaddingValues(
-            horizontal = MainScreenLazyColumnHorizontalPadding
+            horizontal = MemberListContentPadding
         ),
         verticalArrangement = Arrangement.spacedBy(
-            MainScreenLazyColumnVerticalArrangementSpacedBy
+            MemberListVerticalArrangementSpacedBy
         ),
     ) {
         items(items) {

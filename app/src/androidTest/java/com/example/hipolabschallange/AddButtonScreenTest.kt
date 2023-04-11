@@ -3,7 +3,7 @@ package com.example.hipolabschallange
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import com.example.hipolabschallange.designsystem.theme.AddButton
+import com.example.hipolabschallange.designsystem.theme.ButtonBackground
 import org.junit.Assert.assertEquals
 import org.junit.FixMethodOrder
 import org.junit.Rule
@@ -33,6 +33,6 @@ class AddButtonScreenTest {
 
     @Test
     fun test_addButton_backgroundColor_isTrue() {
-        composeTestRule.onNodeWithTag("AddButton").assertColor(AddButton)
+        composeTestRule.onNodeWithTag("AddButton").assertColor(ButtonBackground)
     }
 }

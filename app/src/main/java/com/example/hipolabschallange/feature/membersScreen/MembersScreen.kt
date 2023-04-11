@@ -61,30 +61,30 @@ fun MembersScreen() {
             Column(
                 modifier = Modifier
                     .fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(MainScreenVerticalArrangementSpacedBy),
+                verticalArrangement = Arrangement.spacedBy(MembersScreenVerticalArrangementSpacedBy),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
 
                 TopBar(modifier = Modifier, topBarText = stringResource(id = R.string.top_bar_text))
 
                 SearchBar(
-                    Modifier.padding(horizontal = MainScreenSearchBarHorizontalPadding),
+                    Modifier.padding(horizontal = MembersScreenSearchBarHorizontalPadding),
                     value = searchText,
                     onValueChange = membersScreenViewModel::onSearchBarTextChanged
                 )
 
                 MemberList(
                     modifier = Modifier
-                        .weight(MainScreenLazyColumnWeight),
+                        .weight(MemberListWeight),
                     items = members
                 )
 
                 Column(
                     modifier = Modifier
                         .padding(
-                            start = MainScreenAddButtonColumnPaddingStart,
-                            end = MainScreenAddButtonColumnPaddingEnd,
-                            bottom = MainScreenAddButtonColumnPaddingBottom
+                            start = MembersScreenAddButtonColumnPaddingStart,
+                            end = MembersScreenAddButtonColumnPaddingEnd,
+                            bottom = MembersScreenAddButtonColumnPaddingBottom
                         )
                 ) {
                     AddButton(

@@ -49,9 +49,9 @@ fun Dialog(
                     contentAlignment = Alignment.Center
                 ) {
                     Column(
-                        modifier = modifier.padding(AddNewMemberDialogColumnPadding),
+                        modifier = modifier.padding(DialogColumnPadding),
                         verticalArrangement = Arrangement.spacedBy(
-                            AddNewMemberDialogColumnVerticalArrangementPadding
+                            DialogColumnVerticalArrangementPadding
                         )
                     ) {
 
@@ -66,13 +66,13 @@ fun Dialog(
                             modifier = Modifier
                                 .clip(Shapes.medium)
                                 .fillMaxWidth()
-                                .height(AddNewMemberDialogDividerHeight)
+                                .height(DialogDividerHeight)
                                 .background(MaterialTheme.colorScheme.onSurface)
                         )
 
                         Column(
                             verticalArrangement = Arrangement.spacedBy(
-                                AddNewMemberDialogTextFieldsColumnVerticalArrangementPadding
+                                DialogTextFieldsColumnVerticalArrangementPadding
                             )
                         ) {
 
@@ -108,7 +108,7 @@ fun Dialog(
                             )
                             Spacer(
                                 modifier = Modifier.width(
-                                    AddNewMemberDialogActionButtonsRowSpacer
+                                    DialogActionButtonsRowSpacer
                                 )
                             )
                             DialogActionButton(
@@ -149,9 +149,9 @@ fun DialogInputTextField(
             .background(background)
             .fillMaxWidth()
             .shadow(
-                elevation = RecordCardShadowElevation,
+                elevation = CardShadowElevation,
                 shape = RectangleShape,
-                spotColor = RecordCardShadowSpotColor
+                spotColor = CardShadowSpotColor
             ),
         contentAlignment = Alignment.CenterStart
     ) {
@@ -207,7 +207,7 @@ fun DialogActionButton(
                 rememberRipple(bounded = true),
                 onClick = onClick
             )
-            .padding(AddNewMemberDialogActionButtonsPadding)
+            .padding(DialogActionButtonsPadding)
     )
 }
 

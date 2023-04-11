@@ -15,22 +15,22 @@ import androidx.core.view.WindowCompat
 private val DarkColorScheme = darkColorScheme(
     surface = Color.Black,
     onSurface = Color.White,
-    primaryContainer = SearchBar,
+    primaryContainer = SearchBarBackground,
     onPrimaryContainer = Color.Black,
-    secondaryContainer = RecordCard,
+    secondaryContainer = CardBackground,
     onSecondaryContainer = Color.Black,
-    tertiaryContainer = AddButton,
+    tertiaryContainer = ButtonBackground,
     onTertiaryContainer = Color.Black
 )
 
 private val LightColorScheme = lightColorScheme(
     surface = Color.White,
     onSurface = Color.Black,
-    primaryContainer = SearchBar,
+    primaryContainer = SearchBarBackground,
     onPrimaryContainer = Color.Black,
-    secondaryContainer = RecordCard,
-    onSecondaryContainer = RecordCardText,
-    tertiaryContainer = AddButton,
+    secondaryContainer = CardBackground,
+    onSecondaryContainer = CardInputText,
+    tertiaryContainer = ButtonBackground,
     onTertiaryContainer = Color.White,
 )
 

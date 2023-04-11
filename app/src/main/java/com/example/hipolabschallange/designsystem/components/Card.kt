@@ -24,20 +24,20 @@ fun Card(
 ) {
     Box(
         modifier = modifier
-            .border(RecordCardBorder, color = RecordCardStroke, shape = Shapes.small)
+            .border(CardBorder, color = CardStroke, shape = Shapes.small)
             .clip(Shapes.small)
             .background(MaterialTheme.colorScheme.secondaryContainer)
             .padding(
-                vertical = RecordCardVerticalPadding,
-                horizontal = RecordCardHorizontalPadding
+                vertical = CardVerticalPadding,
+                horizontal = CardHorizontalPadding
             )
             .fillMaxWidth()
             .shadow(
-                elevation = RecordCardShadowElevation,
+                elevation = CardShadowElevation,
                 shape = RectangleShape,
-                spotColor = RecordCardShadowSpotColor
+                spotColor = CardShadowSpotColor
             )
-            .testTag("RecordCard"),
+            .testTag("Card"),
         contentAlignment = Alignment.CenterStart
     ) {
         if (text != null) {
@@ -55,7 +55,10 @@ fun RecordCard(
     modifier: Modifier,
     recordText: String?,
 ) {
-    Card(modifier = modifier, text = recordText)
+    Card(
+        modifier = modifier,
+        text = recordText
+    )
 }
 
 @Preview

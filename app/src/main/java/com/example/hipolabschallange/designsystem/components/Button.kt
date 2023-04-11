@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.hipolabschallange.designsystem.theme.AddButtonHorizontalPadding
-import com.example.hipolabschallange.designsystem.theme.AddButtonVerticalPadding
+import com.example.hipolabschallange.designsystem.theme.ButtonHorizontalPadding
+import com.example.hipolabschallange.designsystem.theme.ButtonVerticalPadding
 import com.example.hipolabschallange.designsystem.theme.HipolabsChallengeTheme
 import com.example.hipolabschallange.designsystem.theme.Shapes
 
@@ -39,8 +39,8 @@ fun Button(
             )
             .background(MaterialTheme.colorScheme.tertiaryContainer)
             .padding(
-                vertical = AddButtonVerticalPadding,
-                horizontal = AddButtonHorizontalPadding
+                vertical = ButtonVerticalPadding,
+                horizontal = ButtonHorizontalPadding
             )
             .fillMaxWidth(),
         contentAlignment = Alignment.Center
