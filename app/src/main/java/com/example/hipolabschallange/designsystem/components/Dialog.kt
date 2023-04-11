@@ -41,7 +41,7 @@ fun Dialog(
         content =
         {
             Surface(
-                modifier = modifier.testTag("AddNewMemberDialog"),
+                modifier = modifier.testTag("Dialog"),
                 shape = Shapes.medium,
                 color = MaterialTheme.colorScheme.surface
             ) {
@@ -56,7 +56,7 @@ fun Dialog(
                     ) {
 
                         Text(
-                            modifier = Modifier.testTag("AddNewMemberDialogHeader"),
+                            modifier = Modifier.testTag("DialogHeader"),
                             text = stringResource(id = R.string.add_new_member_dialog_label),
                             style = MaterialTheme.typography.headlineSmall,
                             color = MaterialTheme.colorScheme.onSurface
@@ -77,7 +77,7 @@ fun Dialog(
                         ) {
 
                             DialogInputTextField(
-                                modifier = Modifier,
+                                modifier = Modifier.testTag("DialogInputNameField"),
                                 inputText = name,
                                 isError = isError,
                                 background = MaterialTheme.colorScheme.primaryContainer,
@@ -86,7 +86,7 @@ fun Dialog(
                             )
 
                             DialogInputTextField(
-                                modifier = Modifier.testTag("AddNewMemberDialogCancelButton"),
+                                modifier = Modifier.testTag("DialogInputPositionField"),
                                 inputText = position,
                                 isError = isError,
                                 background = MaterialTheme.colorScheme.primaryContainer,
@@ -100,7 +100,7 @@ fun Dialog(
                             horizontalArrangement = Arrangement.End
                         ) {
                             DialogActionButton(
-                                modifier = Modifier.testTag("AddNewMemberDialogCancelButton"),
+                                modifier = Modifier.testTag("DialogCancelButton"),
                                 buttonText = stringResource(id = R.string.add_new_member_dialog_cancel_button),
                                 onClick = {
                                     isDialogVisible.value = false
@@ -112,7 +112,7 @@ fun Dialog(
                                 )
                             )
                             DialogActionButton(
-                                modifier = Modifier.testTag("AddNewMemberDialogAddButton"),
+                                modifier = Modifier.testTag("DialogAddButton"),
                                 buttonText = stringResource(R.string.add_new_member_dialog_add_button),
                                 onClick = {
                                     if (position.value.isBlank() || name.value.isBlank()) {
@@ -159,7 +159,7 @@ fun DialogInputTextField(
             modifier = modifier
                 .fillMaxWidth()
                 .background(background)
-                .testTag("AddNewMemberInputText"),
+                .testTag("DialogInputTextField"),
             value = inputText.value,
             onValueChange = {
                 inputText.value = it

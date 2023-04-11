@@ -10,7 +10,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runners.MethodSorters
 
-fun SemanticsNodeInteraction.assertButtonColor(expectedColor: Color) {
+fun SemanticsNodeInteraction.assertColor(expectedColor: Color) {
     val capturedName = captureToImage().colorSpace.name
     assertEquals(expectedColor.colorSpace.name, capturedName)
 }
@@ -32,7 +32,7 @@ class AddButtonScreenTest {
     }
 
     @Test
-    fun test_addButton_backgroundColor_isSuccessful() {
-        composeTestRule.onNodeWithTag("AddButton").assertButtonColor(AddButton)
+    fun test_addButton_backgroundColor_isTrue() {
+        composeTestRule.onNodeWithTag("AddButton").assertColor(AddButton)
     }
 }
