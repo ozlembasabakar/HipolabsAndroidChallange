@@ -18,9 +18,59 @@ Keeping data in a single source also ensures **one-way(_unidirectional_) data fl
 
 >The single source of truth principle is often used in our guides with the Unidirectional Data Flow (UDF) pattern. In UDF, state flows in only one direction. The events that modify the data flow in the opposite direction.
 
+MVVM (Model-View-ViewModel) architectural structure was used in the project. This approach is a design pattern used to separate user interface (UI) logic from business logic and data manipulation.
+
+One of the smart ways of developing modern applications is by using MVVM, which encourages the separation of concerns and maintenance of code. Also, developersAndroid recommends using it when working on projects created with Jetpack compose.
+
+   
+<table>
+  <tr>
+   <td><strong>Components</strong>
+   </td>
+   <td><strong>What was its purpose?</strong>
+   </td>
+   <td><strong>Classes</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>Model</td>
+   <td>The app's data and business logic are represented in here. Data fetching and storage could be handled using data classes, databases, network APIs, or repositories.</td>
+   <td><code>Repository</code><br>
+   <code>Datasource</code><br>
+    <code>Member</code><br>
+   </td>
+  </tr>
+  <tr>
+   <td>View</td>
+   <td>The app's user interface is represented by the View. The View is in charge of rendering the user interface and receiving user input events.<br>
+   </td>
+   <td><code>MembersScreen</code><br>
+   </td>
+  </tr>
+  <tr>
+   <td>ViewModel</td>
+   <td>Between the Model and the View, the ViewModel serves as a bridge. It contains the data to display in the View and provides methods to which the View can be used. It also interacts with the model to retrieve or update data. ViewModel has no direct reference to View, but View has.</td>
+   <td><code>MembersScreenViewModel</code></td>
+  </tr>
+</table>
+<br></br>
 
 ### Data
+
+![Data Layer](https://user-images.githubusercontent.com/53402156/231830986-326d59a1-9558-4081-bf62-1266b8a2f70a.png)
+
+There are repositories in the data layer. Depending on the type of data that handled, these repositories may have a single data source, several sources, or no sources at all.
+
+Repositories' responsibilities are exposing data to the rest of the application, centralizing data changes, resolving conflicts between (if any) various data sources, separating data sources from the app  and containing business logic.
+
+>Other layers should never access data sources directly; the entry points to the data layer are always the repository classes. State holder classes (see the UI layer guide) or use case classes (see the domain layer guide) should never have a data source as a direct dependency. Using repository classes as entry points allows the different layers of the architecture to scale independently.
+
+In this project, member data is stored in a class called Datasource. Repository takes Datasource as dependency in its constructor. And it acts as a bridge between MembersScreenViewModel and Datasource. MembersScreenViewModel only receives the data it requires with this structure. It doesn't care from where or how the data was comes from for ViewModel. Because this is not ViewModel's responsibility.
+<br></br>
+
 ### UI
+
+
 
 ## Screenshots
  
