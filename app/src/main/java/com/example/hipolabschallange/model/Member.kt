@@ -1,6 +1,7 @@
 package com.example.hipolabschallange.model
 
-@kotlinx.serialization.Serializable
+import kotlinx.serialization.Serializable
+@Serializable
 data class Member(
     val age: Int?,
     val github: String?,

@@ -1,7 +1,9 @@
 package com.example.hipolabschallange.model
 
-@kotlinx.serialization.Serializable
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Hipo(
     val position: String?,
-    val years_in_hipo: Int?
+    val years_in_hipo: Int?,
 )

@@ -31,106 +31,145 @@ fun Dialog(
     modifier: Modifier = Modifier,
     name: MutableState<String>,
     position: MutableState<String>,
+    years_in_hipo: MutableState<String>,
+    age: MutableState<String>,
+    github: MutableState<String>,
+    location: MutableState<String>,
     isDialogVisible: MutableState<Boolean>,
     isError: MutableState<Boolean>,
     onClick: (String) -> Unit,
+    validateOfRecord: () -> Boolean,
 ) {
 
     Dialog(
-        onDismissRequest = { },
-        content =
-        {
-            Surface(
-                modifier = modifier.testTag("Dialog"),
-                shape = Shapes.medium,
-                color = MaterialTheme.colorScheme.surface
+        onDismissRequest = { }
+    ) {
+        Surface(
+            modifier = modifier.testTag("Dialog"),
+            shape = Shapes.medium,
+            color = MaterialTheme.colorScheme.surface
+        ) {
+            Box(
+                contentAlignment = Alignment.Center
             ) {
-                Box(
-                    contentAlignment = Alignment.Center
+                Column(
+                    modifier = modifier.padding(DialogColumnPadding),
+                    verticalArrangement = Arrangement.spacedBy(
+                        DialogColumnVerticalArrangementPadding
+                    )
                 ) {
+
+                    Text(
+                        modifier = Modifier.testTag("DialogHeader"),
+                        text = stringResource(id = R.string.add_new_member_dialog_label),
+                        style = MaterialTheme.typography.headlineSmall,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+
+                    Divider(
+                        modifier = Modifier
+                            .clip(Shapes.medium)
+                            .fillMaxWidth()
+                            .height(DialogDividerHeight)
+                            .background(MaterialTheme.colorScheme.onSurface)
+                    )
+
                     Column(
-                        modifier = modifier.padding(DialogColumnPadding),
                         verticalArrangement = Arrangement.spacedBy(
-                            DialogColumnVerticalArrangementPadding
+                            DialogTextFieldsColumnVerticalArrangementPadding
                         )
                     ) {
 
-                        Text(
-                            modifier = Modifier.testTag("DialogHeader"),
-                            text = stringResource(id = R.string.add_new_member_dialog_label),
-                            style = MaterialTheme.typography.headlineSmall,
-                            color = MaterialTheme.colorScheme.onSurface
+                        DialogInputTextField(
+                            modifier = Modifier.testTag("DialogInputNameField"),
+                            inputText = name,
+                            isError = isError,
+                            background = MaterialTheme.colorScheme.primaryContainer,
+                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            placeholder = stringResource(id = R.string.add_new_member_dialog_name_placeholder),
                         )
 
-                        Divider(
-                            modifier = Modifier
-                                .clip(Shapes.medium)
-                                .fillMaxWidth()
-                                .height(DialogDividerHeight)
-                                .background(MaterialTheme.colorScheme.onSurface)
+                        DialogInputTextField(
+                            modifier = Modifier.testTag("DialogInputPositionField"),
+                            inputText = position,
+                            isError = isError,
+                            background = MaterialTheme.colorScheme.primaryContainer,
+                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            placeholder = stringResource(id = R.string.add_new_member_dialog_position_placeholder),
                         )
 
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(
-                                DialogTextFieldsColumnVerticalArrangementPadding
-                            )
-                        ) {
+                        DialogInputTextField(
+                            modifier = Modifier,
+                            inputText = years_in_hipo,
+                            isError = isError,
+                            background = MaterialTheme.colorScheme.primaryContainer,
+                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            placeholder = stringResource(id = R.string.add_new_member_dialog_yearsInHipo_placeholder),
+                        )
 
-                            DialogInputTextField(
-                                modifier = Modifier.testTag("DialogInputNameField"),
-                                inputText = name,
-                                isError = isError,
-                                background = MaterialTheme.colorScheme.primaryContainer,
-                                textColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                                placeholder = stringResource(id = R.string.add_new_member_dialog_name_placeholder),
-                            )
+                        DialogInputTextField(
+                            modifier = Modifier,
+                            inputText = age,
+                            isError = isError,
+                            background = MaterialTheme.colorScheme.primaryContainer,
+                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            placeholder = stringResource(id = R.string.add_new_member_dialog_age_placeholder),
+                        )
 
-                            DialogInputTextField(
-                                modifier = Modifier.testTag("DialogInputPositionField"),
-                                inputText = position,
-                                isError = isError,
-                                background = MaterialTheme.colorScheme.primaryContainer,
-                                textColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                                placeholder = stringResource(id = R.string.add_new_member_dialog_position_placeholder),
-                            )
-                        }
+                        DialogInputTextField(
+                            modifier = Modifier,
+                            inputText = github,
+                            isError = isError,
+                            background = MaterialTheme.colorScheme.primaryContainer,
+                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            placeholder = stringResource(id = R.string.add_new_member_dialog_github_placeholder),
+                        )
 
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.End
-                        ) {
-                            DialogActionButton(
-                                modifier = Modifier.testTag("DialogCancelButton"),
-                                buttonText = stringResource(id = R.string.add_new_member_dialog_cancel_button),
-                                onClick = {
+                        DialogInputTextField(
+                            modifier = Modifier,
+                            inputText = location,
+                            isError = isError,
+                            background = MaterialTheme.colorScheme.primaryContainer,
+                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                            placeholder = stringResource(id = R.string.add_new_member_dialog_location_placeholder),
+                        )
+                    }
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        DialogActionButton(
+                            modifier = Modifier.testTag("DialogCancelButton"),
+                            buttonText = stringResource(id = R.string.add_new_member_dialog_cancel_button),
+                            onClick = {
+                                isDialogVisible.value = false
+                            }
+                        )
+                        Spacer(
+                            modifier = Modifier.width(
+                                DialogActionButtonsRowSpacer
+                            )
+                        )
+                        DialogActionButton(
+                            modifier = Modifier.testTag("DialogAddButton"),
+                            buttonText = stringResource(R.string.add_new_member_dialog_add_button),
+                            onClick = {
+                                if (validateOfRecord()) {
+                                    isError.value = true
+                                    isDialogVisible.value = true
+                                } else {
+                                    isError.value = false
                                     isDialogVisible.value = false
+                                    onClick(name.value)
                                 }
-                            )
-                            Spacer(
-                                modifier = Modifier.width(
-                                    DialogActionButtonsRowSpacer
-                                )
-                            )
-                            DialogActionButton(
-                                modifier = Modifier.testTag("DialogAddButton"),
-                                buttonText = stringResource(R.string.add_new_member_dialog_add_button),
-                                onClick = {
-                                    if (position.value.isBlank() || name.value.isBlank()) {
-                                        isError.value = true
-                                        isDialogVisible.value = true
-                                    } else {
-                                        isError.value = false
-                                        isDialogVisible.value = false
-                                        onClick(name.value)
-                                    }
-                                }
-                            )
-                        }
+                            }
+                        )
                     }
                 }
             }
         }
-    )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -216,17 +255,27 @@ fun AddNewMemberDialog(
     modifier: Modifier = Modifier,
     name: MutableState<String>,
     position: MutableState<String>,
+    years_in_hipo: MutableState<String>,
+    age: MutableState<String>,
+    github: MutableState<String>,
+    location: MutableState<String>,
     isDialogVisible: MutableState<Boolean>,
     isError: MutableState<Boolean>,
     onClick: (String) -> Unit,
+    validateOfRecord: () -> Boolean,
 ) {
     Dialog(
         modifier = modifier,
         name = name,
         position = position,
+        years_in_hipo = years_in_hipo,
+        age = age,
+        github = github,
+        location = location,
         isDialogVisible = isDialogVisible,
         isError = isError,
-        onClick = onClick
+        onClick = onClick,
+        validateOfRecord = validateOfRecord
     )
 }
 
@@ -236,6 +285,10 @@ fun AddNewMemberDialog(
 fun AddNewMemberDialog_isError_Preview() {
     val name = remember { mutableStateOf("") }
     val position = remember { mutableStateOf("") }
+    val years_in_hipo = remember { mutableStateOf("") }
+    val age = remember { mutableStateOf("") }
+    val github = remember { mutableStateOf("") }
+    val location = remember { mutableStateOf("") }
     val isDialogVisible = remember { mutableStateOf(true) }
     val isError = remember { mutableStateOf(true) }
 
@@ -243,9 +296,14 @@ fun AddNewMemberDialog_isError_Preview() {
         AddNewMemberDialog(
             name = name,
             position = position,
+            years_in_hipo = years_in_hipo,
+            age = age,
+            github = github,
+            location = location,
             isDialogVisible = isDialogVisible,
             isError = isError,
             onClick = {},
+            validateOfRecord = { true }
         )
     }
 }
@@ -255,6 +313,10 @@ fun AddNewMemberDialog_isError_Preview() {
 fun AddNewMemberDialogPreview() {
     val name = remember { mutableStateOf("") }
     val position = remember { mutableStateOf("") }
+    val years_in_hipo = remember { mutableStateOf("") }
+    val age = remember { mutableStateOf("") }
+    val github = remember { mutableStateOf("") }
+    val location = remember { mutableStateOf("") }
     val isDialogVisible = remember { mutableStateOf(true) }
     val isError = remember { mutableStateOf(false) }
 
@@ -262,9 +324,14 @@ fun AddNewMemberDialogPreview() {
         AddNewMemberDialog(
             name = name,
             position = position,
+            years_in_hipo = years_in_hipo,
+            age = age,
+            github = github,
+            location = location,
             isDialogVisible = isDialogVisible,
             isError = isError,
             onClick = {},
+            validateOfRecord = { true }
         )
     }
 }

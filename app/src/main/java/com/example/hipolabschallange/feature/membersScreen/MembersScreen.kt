@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.hipolabschallange.R
 import com.example.hipolabschallange.designsystem.components.*
 import com.example.hipolabschallange.designsystem.theme.*
@@ -26,11 +28,15 @@ import com.example.hipolabschallange.designsystem.theme.*
 fun MembersScreen() {
 
     val membersScreenViewModel: MembersScreenViewModel = hiltViewModel()
-    val searchText by membersScreenViewModel.searchText.collectAsState()
-    val members by membersScreenViewModel.members.collectAsState()
+    val searchText by membersScreenViewModel.searchText.collectAsStateWithLifecycle()
+    val members by membersScreenViewModel.members.collectAsStateWithLifecycle()
 
     val name = membersScreenViewModel.name
     val position = membersScreenViewModel.position
+    val yearsInHipo = membersScreenViewModel.yearsInHipo
+    val age = membersScreenViewModel.age
+    val github = membersScreenViewModel.github
+    val location = membersScreenViewModel.location
 
     Scaffold(
         containerColor = MaterialTheme.colorScheme.surface,
@@ -41,11 +47,19 @@ fun MembersScreen() {
                     onClick = {
                         membersScreenViewModel.addNewMember(
                             name.value,
-                            position.value
+                            position.value,
+                            yearsInHipo.value,
+                            age.value,
+                            github.value,
+                            location.value
                         )
 
                         name.value = ""
                         position.value = ""
+                        yearsInHipo.value = ""
+                        age.value = ""
+                        github.value = ""
+                        location.value = ""
 
                         Log.d(
                             "ozlem",
@@ -54,8 +68,13 @@ fun MembersScreen() {
                     },
                     name = name,
                     position = position,
+                    years_in_hipo = yearsInHipo,
+                    age = age,
+                    github = github,
+                    location = location,
                     isError = membersScreenViewModel.isError,
-                    isDialogVisible = membersScreenViewModel.isDialogVisible
+                    isDialogVisible = membersScreenViewModel.isDialogVisible,
+                    validateOfRecord = membersScreenViewModel::validateOfRecord
                 )
 
             Column(

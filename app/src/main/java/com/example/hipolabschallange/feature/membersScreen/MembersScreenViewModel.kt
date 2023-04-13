@@ -17,6 +17,10 @@ class MembersScreenViewModel @Inject constructor(
 
     val name = mutableStateOf("")
     val position = mutableStateOf("")
+    val yearsInHipo = mutableStateOf("")
+    val age = mutableStateOf("")
+    val github = mutableStateOf("")
+    val location = mutableStateOf("")
 
     private val _searchText = MutableStateFlow("")
     val searchText = _searchText.asStateFlow()
@@ -41,6 +45,9 @@ class MembersScreenViewModel @Inject constructor(
     val isError = mutableStateOf(false)
     val isDialogVisible = mutableStateOf(false)
 
+    fun validateOfRecord(): Boolean {
+        return name.value.isBlank() || position.value.isBlank() || yearsInHipo.value.isBlank() || age.value.isBlank() || github.value.isBlank() || location.value.isBlank()
+    }
 
     fun onSearchBarTextChanged(name: String) {
         _searchText.value = name
@@ -49,12 +56,17 @@ class MembersScreenViewModel @Inject constructor(
     fun addNewMember(
         name: String,
         position: String,
-    ) {
+        years_in_hipo: String,
+        age: String,
+        github: String,
+        location: String,
+
+        ) {
         val member = Member(
-            age = null,
-            github = null,
-            hipo = Hipo(position, years_in_hipo = null),
-            location = null,
+            age = age.toInt(),
+            github = github,
+            hipo = Hipo(position, years_in_hipo = years_in_hipo.toInt()),
+            location = location,
             name = name
         )
 
@@ -65,7 +77,3 @@ class MembersScreenViewModel @Inject constructor(
         }
     }
 }
-
-data class MembersScreenViewState(
-    val member: List<Member>,
-)

@@ -2,8 +2,14 @@
     <string name="app_name">HipolabsChallenge</string>
 
     <string name="add_new_member_dialog_label">Please enter your information</string>
+
     <string name="add_new_member_dialog_name_placeholder">Name</string>
     <string name="add_new_member_dialog_position_placeholder">Position</string>
+    <string name="add_new_member_dialog_yearsInHipo_placeholder">Years In Hipo</string>
+    <string name="add_new_member_dialog_age_placeholder">Age</string>
+    <string name="add_new_member_dialog_github_placeholder">Github</string>
+    <string name="add_new_member_dialog_location_placeholder">Location</string>
+
     <string name="add_new_member_dialog_add_button">Add</string>
     <string name="add_new_member_dialog_cancel_button">Cancel</string>
 
