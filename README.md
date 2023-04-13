@@ -70,7 +70,32 @@ In this project, member data is stored in a class called Datasource. Repository 
 
 ### UI
 
+![UI Layer](https://user-images.githubusercontent.com/53402156/231838477-f4153bf4-4a37-4747-9c93-edb5e5ff9911.png)
 
+The UI's role is to display application data on the screen.
+ 
+Any changes to the data must be reflected in the UI. The pipeline that converts application data changes into a form the UI can show and then displays them is known as the UI layer.
+
+The tasks of the ui layer in developer.android are explained as follows:
+
+>The role of the data layer is to hold, manage, and provide access to the app data, the UI layer must perform the following steps:
+>- Consume app data and transform it into data the UI can easily render.
+>- Consume UI-renderable data and transform it into UI elements for presentation to the user.
+>- Consume user input events from those assembled UI elements and reflect their effects in the UI data as needed.
+>- Repeat steps 1 through 3 for as long as necessary.
+
+The project was created taking into account these items. In MembersScreenViewModel, the data from the Repository has been transformed into data that can be displayed in the UI using StateFlow and making the necessary transformations.
+
+![Group 13](https://user-images.githubusercontent.com/53402156/231847442-531f3c6f-9b11-4414-aa89-3255abb3bb3d.png)
+
+The events that occur when the user adds a new member to the list are as follows:
+1. asd
+2. asd
+3. asd
+4. asd
+5. asd
+6. asd
+7. asd
 
 ## Screenshots
  
