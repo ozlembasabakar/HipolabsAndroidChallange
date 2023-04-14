@@ -185,8 +185,7 @@ fun DialogInputTextField(
         TextField(
             modifier = modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.primary)
-                .testTag("DialogInputTextField"),
+                .background(MaterialTheme.colorScheme.primary) ,
             value = inputText.value,
             onValueChange = {
                 inputText.value = it
@@ -241,7 +240,8 @@ fun DialogInputNumberField(
         TextField(
             modifier = modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.primary),
+                .background(MaterialTheme.colorScheme.primary)
+                .testTag("DialogInputNumberField"),
             value = inputNumber.value,
             onValueChange = {
                 inputNumber.value = it

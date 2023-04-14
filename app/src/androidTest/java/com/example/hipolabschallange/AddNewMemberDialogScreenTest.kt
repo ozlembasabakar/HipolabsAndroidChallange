@@ -63,23 +63,33 @@ class AddNewMemberDialogScreenTest {
     }
 
     @Test
-    fun test_addNewMemberDialog_namePlaceholder_isVisible() {
+    fun test_addNewMemberDialog_dialogInputTextFieldPlaceholder_isVisible() {
+
+        val name = "Name"
+
         composeTestRule.onNodeWithTag("AddButton").performClick()
         Thread.sleep(1000)
 
-        composeTestRule.onNodeWithText("Name").assertExists()
+        composeTestRule.onAllNodes(hasTestTag("DialogInputTextField")).apply {
+            fetchSemanticsNodes().forEachIndexed { i, _ ->
+                get(i).assertTextContains(name)
+            }
+        }
     }
 
     @Test
-    fun test_addNewMemberDialog_positionPlaceholder_isVisible() {
+    fun test_addNewMemberDialog_dialogInputNumberFieldPlaceholder_isVisible() {
+
+        val age = "Age"
+
         composeTestRule.onNodeWithTag("AddButton").performClick()
         Thread.sleep(1000)
 
-        composeTestRule.onNodeWithText("Position").assertExists()
+        composeTestRule.onNodeWithText(age).assertExists()
     }
 
     @Test
-    fun test_addNewMemberDialog_nameInput_isVisible() {
+    fun test_addNewMemberDialog_dialogInputTextField_isVisible() {
 
         val name = "Özlem"
 
@@ -87,55 +97,66 @@ class AddNewMemberDialogScreenTest {
         Thread.sleep(1000)
         composeTestRule.onNodeWithText("Name").performTextInput(name)
 
-        composeTestRule.onNodeWithTag("DialogInputNameField").assert(hasText(name))
+        composeTestRule.onAllNodes(hasTestTag("DialogInputTextField")).apply {
+            fetchSemanticsNodes().forEachIndexed { i, _ ->
+                get(i).assertTextContains(name)
+            }
+        }
     }
 
     @Test
-    fun test_addNewMemberDialog_positionInput_isVisible() {
+    fun test_addNewMemberDialog_dialogInputNumberField_isVisible() {
 
-        val position = "Intern"
+        val age = "27"
 
         composeTestRule.onNodeWithTag("AddButton").performClick()
         Thread.sleep(1000)
-        composeTestRule.onNodeWithText("Position").performTextInput(position)
+        composeTestRule.onNodeWithText("Age").performTextInput(age)
 
-        composeTestRule.onNodeWithText(position).assertExists()
+        composeTestRule.onNodeWithText(age).assertExists()
     }
 
     @Test
     fun test_addNewMemberDialog_invalidInput() {
+
+        val name = ""
+        val position = ""
+        val yearsInHipo = ""
+        val age = ""
+        val github = ""
+        val location = ""
+
         composeTestRule.onNodeWithTag("AddButton").performClick()
         Thread.sleep(1000)
-        composeTestRule.onNodeWithText("Name").performTextInput("")
-        composeTestRule.onNodeWithText("Position").performTextInput("")
+        composeTestRule.onNodeWithText("Name").performTextInput(name)
+        composeTestRule.onNodeWithText("Position").performTextInput(position)
+        composeTestRule.onNodeWithText("Years In Hipo").performTextInput(yearsInHipo)
+        composeTestRule.onNodeWithText("Age").performTextInput(age)
+        composeTestRule.onNodeWithText("Github").performTextInput(github)
+        composeTestRule.onNodeWithText("Location").performTextInput(location)
         composeTestRule.onNodeWithTag("DialogAddButton").performClick()
 
         composeTestRule.onNodeWithTag("DialogAddButton").assertExists()
     }
 
     @Test
-    fun test_addNewMemberDialog_twoInput_isValid() {
+    fun test_addNewMemberDialog_oneInput_isValid() {
 
         val name = "Özlem"
-        val position = "Intern"
+        val position = ""
+        val yearsInHipo = "0"
+        val age = "27"
+        val github = "asd@asd.com"
+        val location = "Istanbul"
 
         composeTestRule.onNodeWithTag("AddButton").performClick()
         Thread.sleep(1000)
         composeTestRule.onNodeWithText("Name").performTextInput(name)
         composeTestRule.onNodeWithText("Position").performTextInput(position)
-        composeTestRule.onNodeWithTag("DialogAddButton").performClick()
-
-        composeTestRule.onNodeWithTag("DialogAddButton").assertDoesNotExist()
-    }
-
-    @Test
-    fun test_addNewMemberDialog_oneInput_isValid() {
-        val name = "Özlem"
-
-        composeTestRule.onNodeWithTag("AddButton").performClick()
-        Thread.sleep(1000)
-        composeTestRule.onNodeWithText("Name").performTextInput(name)
-        composeTestRule.onNodeWithText("Position").performTextInput("")
+        composeTestRule.onNodeWithText("Years In Hipo").performTextInput(yearsInHipo)
+        composeTestRule.onNodeWithText("Age").performTextInput(age)
+        composeTestRule.onNodeWithText("Github").performTextInput(github)
+        composeTestRule.onNodeWithText("Location").performTextInput(location)
         composeTestRule.onNodeWithTag("DialogAddButton").performClick()
 
         composeTestRule.onNodeWithTag("DialogAddButton").assertExists()
@@ -146,11 +167,19 @@ class AddNewMemberDialogScreenTest {
 
         val name = "Özlem"
         val position = "Intern"
+        val yearsInHipo = "0"
+        val age = "27"
+        val github = "asd@asd.com"
+        val location = "Istanbul"
 
         composeTestRule.onNodeWithTag("AddButton").performClick()
         Thread.sleep(1000)
         composeTestRule.onNodeWithText("Name").performTextInput(name)
         composeTestRule.onNodeWithText("Position").performTextInput(position)
+        composeTestRule.onNodeWithText("Years In Hipo").performTextInput(yearsInHipo)
+        composeTestRule.onNodeWithText("Age").performTextInput(age)
+        composeTestRule.onNodeWithText("Github").performTextInput(github)
+        composeTestRule.onNodeWithText("Location").performTextInput(location)
         composeTestRule.onNodeWithTag("DialogAddButton").performClick()
 
         composeTestRule.onNodeWithText(name).assertExists()
