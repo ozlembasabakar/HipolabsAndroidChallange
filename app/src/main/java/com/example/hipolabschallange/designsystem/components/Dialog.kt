@@ -1,5 +1,6 @@
 package com.example.hipolabschallange.designsystem.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -26,6 +27,7 @@ import androidx.compose.ui.window.Dialog
 import com.example.hipolabschallange.R
 import com.example.hipolabschallange.designsystem.theme.*
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun Dialog(
     modifier: Modifier = Modifier,
@@ -84,8 +86,6 @@ fun Dialog(
                             modifier = Modifier.testTag("DialogInputNameField"),
                             inputText = name,
                             isError = isError,
-                            background = MaterialTheme.colorScheme.primaryContainer,
-                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                             placeholder = stringResource(id = R.string.add_new_member_dialog_name_placeholder),
                         )
 
@@ -93,26 +93,20 @@ fun Dialog(
                             modifier = Modifier.testTag("DialogInputPositionField"),
                             inputText = position,
                             isError = isError,
-                            background = MaterialTheme.colorScheme.primaryContainer,
-                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                             placeholder = stringResource(id = R.string.add_new_member_dialog_position_placeholder),
                         )
 
-                        DialogInputTextField(
+                        DialogInputNumberField(
                             modifier = Modifier,
-                            inputText = years_in_hipo,
+                            inputNumber = years_in_hipo,
                             isError = isError,
-                            background = MaterialTheme.colorScheme.primaryContainer,
-                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                             placeholder = stringResource(id = R.string.add_new_member_dialog_yearsInHipo_placeholder),
                         )
 
-                        DialogInputTextField(
+                        DialogInputNumberField(
                             modifier = Modifier,
-                            inputText = age,
+                            inputNumber = age,
                             isError = isError,
-                            background = MaterialTheme.colorScheme.primaryContainer,
-                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                             placeholder = stringResource(id = R.string.add_new_member_dialog_age_placeholder),
                         )
 
@@ -120,8 +114,6 @@ fun Dialog(
                             modifier = Modifier,
                             inputText = github,
                             isError = isError,
-                            background = MaterialTheme.colorScheme.primaryContainer,
-                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                             placeholder = stringResource(id = R.string.add_new_member_dialog_github_placeholder),
                         )
 
@@ -129,8 +121,6 @@ fun Dialog(
                             modifier = Modifier,
                             inputText = location,
                             isError = isError,
-                            background = MaterialTheme.colorScheme.primaryContainer,
-                            textColor = MaterialTheme.colorScheme.onPrimaryContainer,
                             placeholder = stringResource(id = R.string.add_new_member_dialog_location_placeholder),
                         )
                     }
@@ -176,8 +166,6 @@ fun Dialog(
 @Composable
 fun DialogInputTextField(
     modifier: Modifier = Modifier,
-    background: Color,
-    textColor: Color,
     inputText: MutableState<String>,
     isError: MutableState<Boolean>,
     placeholder: String,
@@ -185,19 +173,19 @@ fun DialogInputTextField(
     Box(
         modifier = Modifier
             .clip(Shapes.medium)
-            .background(background)
+            .background(MaterialTheme.colorScheme.primary)
             .fillMaxWidth()
             .shadow(
-                elevation = CardShadowElevation,
+                elevation = DialogInputFieldShadowElevation,
                 shape = RectangleShape,
-                spotColor = CardShadowSpotColor
+                spotColor = DialogInputFieldShadowSpotColor
             ),
         contentAlignment = Alignment.CenterStart
     ) {
         TextField(
             modifier = modifier
                 .fillMaxWidth()
-                .background(background)
+                .background(MaterialTheme.colorScheme.primary)
                 .testTag("DialogInputTextField"),
             value = inputText.value,
             onValueChange = {
@@ -209,7 +197,7 @@ fun DialogInputTextField(
             placeholder = {
                 Text(
                     text = placeholder,
-                    color = textColor,
+                    color = MaterialTheme.colorScheme.onPrimary,
                     style = MaterialTheme.typography.displaySmall
                 )
             },
@@ -219,11 +207,66 @@ fun DialogInputTextField(
                 focusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                containerColor = MaterialTheme.colorScheme.primaryContainer,
-                cursorColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                containerColor = MaterialTheme.colorScheme.primary,
+                cursorColor = MaterialTheme.colorScheme.onPrimary,
                 selectionColors = TextSelectionColors(
-                    backgroundColor = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = SearchBarTextColorAlpha),
-                    handleColor = MaterialTheme.colorScheme.onPrimaryContainer
+                    backgroundColor = MaterialTheme.colorScheme.primary.copy(alpha = DialogInputFieldTextColorAlpha),
+                    handleColor = MaterialTheme.colorScheme.onPrimary
+                )
+            ),
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DialogInputNumberField(
+    modifier: Modifier = Modifier,
+    inputNumber: MutableState<String>,
+    isError: MutableState<Boolean>,
+    placeholder: String,
+) {
+    Box(
+        modifier = Modifier
+            .clip(Shapes.medium)
+            .background(MaterialTheme.colorScheme.primary)
+            .fillMaxWidth()
+            .shadow(
+                elevation = DialogInputFieldShadowElevation,
+                shape = RectangleShape,
+                spotColor = DialogInputFieldShadowSpotColor
+            ),
+        contentAlignment = Alignment.CenterStart
+    ) {
+        TextField(
+            modifier = modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.primary),
+            value = inputNumber.value,
+            onValueChange = {
+                inputNumber.value = it
+                isError.value = false
+            },
+            placeholder = {
+                Text(
+                    text = placeholder,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                    style = MaterialTheme.typography.displaySmall
+                )
+            },
+            textStyle = MaterialTheme.typography.displaySmall,
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            isError = isError.value,
+            colors = TextFieldDefaults.textFieldColors(
+                focusedIndicatorColor = Color.Transparent,
+                disabledIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                containerColor = MaterialTheme.colorScheme.primary,
+                cursorColor = MaterialTheme.colorScheme.onPrimary,
+                selectionColors = TextSelectionColors(
+                    backgroundColor = MaterialTheme.colorScheme.primary.copy(alpha = DialogInputFieldTextColorAlpha),
+                    handleColor = MaterialTheme.colorScheme.onPrimary
                 )
             ),
         )

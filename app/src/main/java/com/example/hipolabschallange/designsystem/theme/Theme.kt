@@ -20,7 +20,9 @@ private val DarkColorScheme = darkColorScheme(
     secondaryContainer = CardBackground,
     onSecondaryContainer = Color.Black,
     tertiaryContainer = ButtonBackground,
-    onTertiaryContainer = Color.Black
+    onTertiaryContainer = Color.Black,
+    primary = DialogInputFieldBackground,
+    onPrimary = Color.Black
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -32,6 +34,8 @@ private val LightColorScheme = lightColorScheme(
     onSecondaryContainer = CardInputText,
     tertiaryContainer = ButtonBackground,
     onTertiaryContainer = Color.White,
+    primary = DialogInputFieldBackground,
+    onPrimary = Color.Black
 )
 
 @Composable

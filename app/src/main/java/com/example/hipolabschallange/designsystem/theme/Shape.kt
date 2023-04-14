@@ -35,6 +35,9 @@ val DialogDividerHeight = 2.dp
 val DialogTextFieldsColumnVerticalArrangementPadding = 10.dp
 val DialogActionButtonsPadding = 8.dp
 val DialogActionButtonsRowSpacer = 15.dp
+const val DialogInputFieldTextColorAlpha = .5f
+val DialogInputFieldShadowElevation = 2.dp
+
 
 val MembersScreenVerticalArrangementSpacedBy = 20.dp
 val MembersScreenSearchBarHorizontalPadding = 20.dp

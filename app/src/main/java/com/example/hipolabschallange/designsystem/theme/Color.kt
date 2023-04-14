@@ -11,3 +11,5 @@ val CardStroke = Color(0xFFE8E8EB)
 val CardInputText = Color(0xFF24292E)
 val CardShadowSpotColor = Color(0xFFE9E9F1)
 val TopBarShadowSpotColor = Color.Black
+val DialogInputFieldBackground = Color(0xFFE8E8E8)
+val DialogInputFieldShadowSpotColor = Color(0xFFE9E9F1)
