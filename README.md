@@ -99,7 +99,7 @@ A simple class that contains the data you display in your UI is _an alternative_
 
 The ViewModel uses existing data **without fetching data again** through _configuration changes such as screen rotation_. This prevents problems from occurring with the Lifecycle.
 
->Its principal advantage is that it caches state and persists it through configuration changes.Bu, etkinlikler arasında gezinirken veya ekranı döndürürken olduğu gibi yapılandırma değişikliklerini takip ederken kullanıcı arabiriminizin tekrar veri getirmesi gerekmediği anlamına gelir.
+>Its principal advantage is that it caches state and persists it through configuration changes. This means that your UI doesn’t have to fetch data again when navigating between activities, or following configuration changes, such as when rotating the screen.
 
 **Hilt** was used in this project. For Android apps, **Hilt** is the _recommended dependency injection (DI) solution by Jetpack_. Hilt enables you to write _less boilerplate code_. For example, it is not necessary to create classes like the Provider class while creating the ViewModel. It makes the connection while generating its own in the background.
 
